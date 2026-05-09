@@ -1,15 +1,39 @@
-const categories = [
-  'Mercados',
-  'Farmácias',
-  'Barbearias',
-  'Restaurantes',
-  'Oficinas',
-  'Igrejas',
-  'Hotéis',
-  'Clínicas',
-]
+import { useEffect, useState } from 'react'
+import { supabase } from '../services/supabase'
 
 function Categories() {
+  const [categorias, setCategorias] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function carregarCategorias() {
+      const { data, error } = await supabase
+        .from('categorias')
+        .select('*')
+        .order('nome')
+
+      if (error) {
+        console.error('Erro ao buscar categorias:', error)
+      } else {
+        setCategorias(data)
+      }
+
+      setLoading(false)
+    }
+
+    carregarCategorias()
+  }, [])
+
+  if (loading) {
+    return (
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 text-center">
+          <p className="text-gray-500">Carregando categorias...</p>
+        </div>
+      </section>
+    )
+  }
+
   return (
     <section className="py-16 bg-gray-50">
       <div className="max-w-6xl mx-auto px-4">
@@ -18,12 +42,12 @@ function Categories() {
         </h3>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {categories.map((category) => (
+          {categorias.map((categoria) => (
             <div
-              key={category}
+              key={categoria.id}
               className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition cursor-pointer text-center font-semibold"
             >
-              {category}
+              {categoria.nome}
             </div>
           ))}
         </div>
