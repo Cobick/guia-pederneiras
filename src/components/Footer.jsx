@@ -1,8 +1,8 @@
 function Footer() {
   return (
-    <footer className="bg-gray-900 text-white py-8">
+    <footer className="bg-zinc-950 border-t border-zinc-800 text-zinc-400 py-8">
       <div className="max-w-6xl mx-auto px-4 text-center">
-        <p>© 2026 Guia Pederneiras. Todos os direitos reservados.</p>
+        <p>© 2026 Guia Pederneiras</p>
       </div>
     </footer>
   )

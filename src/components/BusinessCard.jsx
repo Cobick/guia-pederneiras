@@ -1,22 +1,21 @@
 function BusinessCard({ business }) {
   return (
-    <div className="bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden">
+    <div className="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden hover:border-cyan-500 transition">
       <img
         src={business.image}
-        alt={business.name}
-        className="w-full h-48 object-cover"
+        className="w-full h-48 object-cover opacity-90"
       />
 
       <div className="p-5">
-        <span className="inline-block bg-blue-100 text-blue-700 text-sm font-medium px-3 py-1 rounded-full mb-3">
+        <span className="text-xs text-cyan-400 uppercase tracking-wider">
           {business.category}
         </span>
 
-        <h3 className="text-xl font-bold text-gray-900 mb-2">
+        <h3 className="text-xl font-bold mt-2 text-white">
           {business.name}
         </h3>
 
-        <p className="text-gray-600 mb-4">
+        <p className="text-zinc-400 mt-2 text-sm">
           {business.description}
         </p>
 
@@ -24,9 +23,9 @@ function BusinessCard({ business }) {
           href={business.whatsapp}
           target="_blank"
           rel="noreferrer"
-          className="inline-block w-full text-center bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition"
+          className="mt-4 block text-center bg-cyan-500 text-black py-3 rounded-lg hover:bg-cyan-400 transition font-semibold"
         >
-          Falar no WhatsApp
+          WhatsApp
         </a>
       </div>
     </div>

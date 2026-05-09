@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { supabase } from '../services/supabase'
 
 function Categories() {
@@ -43,12 +44,25 @@ function Categories() {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {categorias.map((categoria) => (
-            <div
+            <Link
               key={categoria.id}
-              className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition cursor-pointer text-center font-semibold"
+              to={`/categoria/${categoria.slug}`}
+              className="
+                bg-zinc-900 
+                border border-zinc-800 
+                px-4 py-3 
+                rounded-full 
+                text-center 
+                font-medium 
+                text-white 
+                hover:border-cyan-500 
+                hover:text-cyan-400 
+                hover:shadow-[0_0_10px_rgba(6,182,212,0.3)] 
+                transition
+              "
             >
               {categoria.nome}
-            </div>
+            </Link>
           ))}
         </div>
       </div>
